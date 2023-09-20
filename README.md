@@ -26,3 +26,24 @@ and solve it as we did in the lectures. Give the final $\Theta$ complexity.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+
+I analized the algorithm using pretty much the same process shown in the merge sort slides
+
+
+
+If array has 0 elements we just return 0
+
+If the array has 1 element we just return that element
+
+If the array has 2 elements the middle index span will be zero and then we just add the numbers up
+
+If the array has more than 3 elements we first calculate the split points and then do regular merge sort splits until we get to the base case and then we just sum them up
+
+From the merge sort slides we saw that we get a T(n) = 2T(n/2) + 2. Now that is if we only split up into two parts if we split up into three we get T(n) = 3T(n/3) + 3. We can then follow the substitution steps from the slides to get 3(3 * T(n/3/3) + 3) + 3 = 9T(n/9) + 6.
+
+We then can plug in i and get 3^i * T(n/3^i) + 3i where i is i = log of base 3 (n) 
+
+That then gets us to n * T(1) + 3log(n) = n(1) + 3 * log(n) = n * 3log(n) which gets us our final answer for theta (n).
+
+For this explination I took some inspiration from Boomboomyoyo's answer as I got a little stuck.
